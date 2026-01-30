@@ -1,2 +1,8 @@
 # Ensure all checked out text files have `\n` line endings
 * text=auto eol=lf
+
+# From FMOD setup guide:
+# Configure your source control system to use line feed characters as line endings in *.bundle and Info.plist files.
+# https://www.fmod.com/docs/2.03/unity/user-guide.html#line-endings
+Assets/Plugins/FMOD/**/*.bundle text eol=lf
+Assets/Plugins/FMOD/**/Info.plist text eol=lf
