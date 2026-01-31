@@ -6,9 +6,8 @@ using static PlayerMovement;
 
 public class MaskHolder : MonoBehaviour
 {
-    private InputAction pickUpAction;
+    private InputAction pickUpOrDropAction;
     private InputAction equipAction;
-    private InputAction dropAction;
 
     [SerializeField]
     private CinemachineBrain cinemachineBrain;
@@ -21,31 +20,30 @@ public class MaskHolder : MonoBehaviour
     private float dropMaskDistance = 1.5f;
     private Mask lookingAtMask;
     private Mask heldMask;
-    private bool isMaskEquipped = false;
+    private Mask equippedMask;
     private Vector3 heldMaskOriginalScale;
     [SerializeField]
     private Vector3 heldMaskScreenCornerOffset;
+    [SerializeField]
+    private Vector3 equippedMaskScreenTopOffset;
     [SerializeField]
     private float heldMaskScaleMultiplier = 0.2f;
 
     void Start()
     {
-        pickUpAction = InputSystem.actions.FindAction("Attack");
-        equipAction = InputSystem.actions.FindAction("Interact");
-        dropAction = InputSystem.actions.FindAction("Drop");
+        pickUpOrDropAction = InputSystem.actions.FindAction("Attack");
+        equipAction = InputSystem.actions.FindAction("Equip");
 
         hudText.text = "";
 
-        pickUpAction.started += OnPickUpActionStarted;
+        pickUpOrDropAction.started += OnPickUpOrDropActionStarted;
         equipAction.started += OnEquipActionStarted;
-        dropAction.started += OnDropActionStarted;
     }
 
     void OnDisable()
     {
-        dropAction.started -= OnDropActionStarted;
         equipAction.started -= OnEquipActionStarted;
-        pickUpAction.started -= OnPickUpActionStarted;
+        pickUpOrDropAction.started -= OnPickUpOrDropActionStarted;
     }
 
     void FixedUpdate()
@@ -85,39 +83,28 @@ public class MaskHolder : MonoBehaviour
         }
     }
 
-    private void OnPickUpActionStarted(InputAction.CallbackContext ctx)
+    private void OnPickUpOrDropActionStarted(InputAction.CallbackContext ctx)
     {
-        if (lookingAtMask == null || heldMask != null)
-            return;
-
-        SetHeldMask(lookingAtMask);
+        if (heldMask != null)
+            SetHeldMask(null);
+        if (lookingAtMask != null)
+            SetHeldMask(lookingAtMask);
     }
 
     private void OnEquipActionStarted(InputAction.CallbackContext ctx)
     {
-        if (heldMask == null)
-            return;
+        equippedMask?.OnUnequipped();
 
-        if (isMaskEquipped)
-            heldMask.OnUnequipped();
-        else
-            heldMask.OnEquipped();
-        isMaskEquipped = !isMaskEquipped;
-    }
+        // Swap held and equipped masks
+        (heldMask, equippedMask) = (equippedMask, heldMask);
 
-    private void OnDropActionStarted(InputAction.CallbackContext ctx)
-    {
-        if (heldMask == null)
-            return;
-
-        var oldMask = heldMask;
-        // Restore various components before calling `OnUnequipped()`
-        SetHeldMask(null);
-        if (isMaskEquipped)
+        if (equippedMask != null)
         {
-            oldMask.OnUnequipped();
-            isMaskEquipped = false;
+            MoveMaskToEquippedPos(equippedMask);
+            equippedMask.OnEquipped();
         }
+        if (heldMask != null)
+            MoveMaskToHeldPos(heldMask);
     }
 
     private void SetHeldMask(Mask mask)
@@ -157,14 +144,29 @@ public class MaskHolder : MonoBehaviour
         heldMaskOriginalScale = maskTransform.localScale;
         maskTransform.localScale = heldMaskScaleMultiplier * heldMaskOriginalScale;
 
-        // Place the mask in the bottom left screen corner
-        var cam = cinemachineBrain.OutputCamera;
-        var bottomLeftScreenPos = new Vector3(
-            heldMaskScreenCornerOffset.x,
-            heldMaskScreenCornerOffset.y,
-            cam.nearClipPlane + heldMaskScreenCornerOffset.z
+        MoveMaskToHeldPos(mask);
+    }
+
+    private void MoveMaskToHeldPos(Mask mask)
+    {
+        MoveMaskToScreenPos(mask, heldMaskScreenCornerOffset);
+    }
+
+    private void MoveMaskToEquippedPos(Mask mask)
+    {
+        MoveMaskToScreenPos(
+            mask,
+            new Vector3(Screen.width / 2f, Screen.height, 0)
+            + equippedMaskScreenTopOffset
         );
-        maskTransform.position = cam.ScreenToWorldPoint(bottomLeftScreenPos);
+    }
+
+    private void MoveMaskToScreenPos(Mask mask, Vector3 pos)
+    {
+        var cam = cinemachineBrain.OutputCamera;
+        var maskTransform = mask.GameObject.transform;
+        var screenPos = new Vector3(pos.x, pos.y, cam.nearClipPlane + pos.z);
+        maskTransform.position = cam.ScreenToWorldPoint(screenPos);
     }
 
     private void MoveMaskWhenDropping(Mask mask)
