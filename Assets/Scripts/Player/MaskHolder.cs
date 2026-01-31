@@ -51,7 +51,7 @@ public class MaskHolder : MonoBehaviour
         CheckLookingAtMask();
     }
 
-    private void CheckLookingAtMask(bool debug = true)
+    private void CheckLookingAtMask(bool debug = false)
     {
         var playerHead = Player.Head.transform;
 
@@ -69,7 +69,7 @@ public class MaskHolder : MonoBehaviour
                 playerHead.TransformDirection(Vector3.forward),
                 out var hit,
                 pickUpMaskMaxDistance,
-                Layer.MASKS.mask
+                Layer.ALL_MASKS_MASK
             ))
         {
             var hitObj = hit.collider.gameObject;

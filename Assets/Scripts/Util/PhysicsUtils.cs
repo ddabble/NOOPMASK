@@ -9,8 +9,18 @@ public class Layer
     public static readonly Layer DEFAULT = new("Default");
     /// <summary>The player itself and its constituent objects.</summary>
     public static readonly Layer PLAYER = new("Player");
-    /// <summary>All masks.</summary>
-    public static readonly Layer MASKS = new("Masks");
+    // Mask colors
+    public static readonly Layer RED = new("Red");
+    public static readonly Layer BLUE = new("Blue");
+    public static readonly Layer GREEN = new("Green");
+    public static readonly Layer PINK = new("Pink");
+
+    public static readonly int ALL_MASKS_MASK = (
+        RED.mask
+        | BLUE.mask
+        | GREEN.mask
+        | PINK.mask
+    );
 
     /// <example>
     /// Making a rigidbody additionally collide with layer <c>A</c> and <c>B</c>:
