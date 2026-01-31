@@ -43,6 +43,8 @@ Shader "Custom/Sky"
 
         // LIGHT
         _PlayerPosition ("Player Position", Vector) = (0, 0, 0)
+        _SunColor ("Sun Color", Color) = (1, 1, 1, 1)
+
 
     }
 
@@ -99,6 +101,7 @@ Shader "Custom/Sky"
 
             float _Creepiness;
             float3 _PlayerPosition;
+            float4 _SunColor;
 
             TEXTURE3D(_PerlinVolume);
             SAMPLER(sampler_PerlinVolume);
@@ -121,6 +124,13 @@ Shader "Custom/Sky"
                 o.pos = TransformObjectToHClip(v.vertex);
 
                 return o;
+            }
+
+            Light get_sun()
+            {
+                Light light = GetMainLight();
+                light.direction.y = -light.direction.y;
+                return light;
             }
 
             // =========================
@@ -166,7 +176,6 @@ Shader "Custom/Sky"
                 p.xz += TIME*_WindSpeed*.1;
                 p.y += TIME*.005;
 
-                // TODO erstatt tex3D()-kall med SampleLevel likevel...
                 // Combine perlin and worley noise for cauliflower-esque cloud shape
                 float perlin = _PerlinVolume.SampleLevel(sampler_PerlinVolume, p, 0).r;
                 float worley = 1. - _WorleyVolumeFBM.SampleLevel(sampler_WorleyVolumeFBM, p, 0).r;
@@ -213,8 +222,9 @@ Shader "Custom/Sky"
             // TODO improve atmosphere :/
             float3 render_background(float3 ray_dir)
             {
-                float dotup = dot(float3(0, 1, 0), ray_dir) + .5;
-                return lerp(_HorizonColor, _TopColor, smoothstep(.01, .55, dotup*dotup));
+                float dotup = dot(float3(0, 1, 0), ray_dir);
+                // TODO evt juster nedover
+                return lerp(lerp(_HorizonColor, _TopColor, smoothstep(.2, -.6, dotup*dotup*dotup)), _BottomColor, smoothstep(.41, -.25, dotup*dotup));
             }
 
             // Multi-octave scattering thingy from some paper
@@ -250,7 +260,7 @@ Shader "Custom/Sky"
                 float distant_light_step = cloud_layer_height * .3;
                 int light_steps = int(_LightMarchSteps);
 
-                Light sun = GetMainLight();
+                Light sun = get_sun();
 
                 // Phase stuff
                 float3 ld = sun.direction;
@@ -313,9 +323,9 @@ Shader "Custom/Sky"
             // Add to color
             float3 render_sun(float dotsun)
             {
-                float sharpsun = smoothstep(.9997, 1., dotsun);
-                float blurrysun = smoothstep(.99, 1., dotsun);
-                float3 sun = GetMainLight().color;
+                float sharpsun = smoothstep(.995, 1., dotsun);
+                float blurrysun = smoothstep(.98, 1., dotsun);
+                float3 sun = _SunColor;
                 return (
                     sun * 100. * sharpsun +
                     sun * .5 * blurrysun*blurrysun*blurrysun
@@ -331,7 +341,7 @@ Shader "Custom/Sky"
 
             float3 render_sky(float3 pos, float3 eyedir)
             {
-                Light sun = GetMainLight();
+                Light sun = get_sun();
                 // TODO correct dir???
                 float3 sun_direction = sun.direction;
                 float dotsun = dot(sun_direction, eyedir);
@@ -377,6 +387,9 @@ Shader "Custom/Sky"
                 float3 dir = normalize(i.viewDir);
                 // TODO må sende inn spillerposisjonen
                 float3 pos = _PlayerPosition;
+                // australia moment
+                pos.y = -pos.y;
+                dir.y = -dir.y;
                 // return float4(i.uv, 0, 1);
                 // return float4(i.viewDir, 1);
 

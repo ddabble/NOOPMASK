@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 246054933774861211}
   - component: {fileID: 7611618186350297852}
   - component: {fileID: 4006579248033653505}
+  - component: {fileID: 4566989003423146571}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -844,3 +845,15 @@ MonoBehaviour:
   heldMaskScreenCornerOffset: {x: 70, y: 200, z: 1}
   equippedMaskScreenTopOffset: {x: 0, y: -70, z: 1}
   heldMaskScaleMultiplier: 0.75
+--- !u!114 &4566989003423146571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7236467479937897623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aecb39100793dc44af99ea19be22bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SunSetter
