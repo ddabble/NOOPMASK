@@ -95,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         HandleMovement();
-        Debug.Log(speed);
     }
 
     void FixedUpdate()
@@ -139,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
         {
             var newSpeed = Math.Max(speed - Time.deltaTime * deceleration, 0.0f);
             speed = newSpeed;
-            Debug.Log("dec " + (speed - Time.deltaTime * deceleration));
           
         }
 
