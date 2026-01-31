@@ -88,9 +88,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drop",
+                    "name": "Equip",
                     "type": "Button",
-                    "id": "9f5e12b1-4d8f-4239-bb5c-9dc02827dc90",
+                    "id": "96f79c2c-bf6d-499b-b00b-a902712c4903",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -485,12 +485,12 @@
                 },
                 {
                     "name": "",
-                    "id": "56c9a1ed-cb0d-4965-9058-dfd5a619521e",
-                    "path": "<Keyboard>/q",
+                    "id": "f41ad5a3-37fb-4a5f-aa8d-0699a0f29dd9",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Drop",
+                    "action": "Equip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

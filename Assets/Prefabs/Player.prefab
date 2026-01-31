@@ -769,4 +769,5 @@ MonoBehaviour:
   pickUpMaskMaxDistance: 3
   dropMaskDistance: 1.5
   heldMaskScreenCornerOffset: {x: 70, y: 200, z: 1}
+  equippedMaskScreenTopOffset: {x: 0, y: -70, z: 1}
   heldMaskScaleMultiplier: 0.75
