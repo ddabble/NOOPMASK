@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerMovement;
@@ -10,6 +11,8 @@ public class MaskHolder : MonoBehaviour
     private InputAction dropAction;
 
     [SerializeField]
+    private CinemachineBrain cinemachineBrain;
+    [SerializeField]
     private TMP_Text hudText;
 
     [SerializeField]
@@ -19,6 +22,11 @@ public class MaskHolder : MonoBehaviour
     private Mask lookingAtMask;
     private Mask heldMask;
     private bool isMaskEquipped = false;
+    private Vector3 heldMaskOriginalScale;
+    [SerializeField]
+    private Vector3 heldMaskScreenCornerOffset;
+    [SerializeField]
+    private float heldMaskScaleMultiplier = 0.2f;
 
     void Start()
     {
@@ -119,22 +127,53 @@ public class MaskHolder : MonoBehaviour
             if (heldMask == null)
                 return;
 
-            heldMask.GetRenderer().enabled = true;
             heldMask.GetCollider().enabled = true;
             var maskRb = heldMask.GameObject.GetComponent<Rigidbody>();
             if (maskRb)
                 maskRb.isKinematic = false;
-            heldMask.GameObject.transform.position = Player.Head.transform.position
-                + dropMaskDistance * Player.Head.transform.forward;
+            MoveMaskWhenDropping(heldMask);
         }
         else
         {
-            mask.GetRenderer().enabled = false;
             mask.GetCollider().enabled = false;
             var maskRb = mask.GameObject.GetComponent<Rigidbody>();
             if (maskRb)
                 maskRb.isKinematic = true;
+            MoveMaskWhenPickingUp(mask);
         }
+
         heldMask = mask;
+    }
+
+    private void MoveMaskWhenPickingUp(Mask mask)
+    {
+        var maskTransform = mask.GameObject.transform;
+        var headTransform = Player.Head.transform;
+        maskTransform.SetParent(headTransform);
+
+        // Turn the mask toward the camera
+        maskTransform.LookAt(maskTransform.position - headTransform.forward);
+        // Shrink the mask
+        heldMaskOriginalScale = maskTransform.localScale;
+        maskTransform.localScale = heldMaskScaleMultiplier * heldMaskOriginalScale;
+
+        // Place the mask in the bottom left screen corner
+        var cam = cinemachineBrain.OutputCamera;
+        var bottomLeftScreenPos = new Vector3(
+            heldMaskScreenCornerOffset.x,
+            heldMaskScreenCornerOffset.y,
+            cam.nearClipPlane + heldMaskScreenCornerOffset.z
+        );
+        maskTransform.position = cam.ScreenToWorldPoint(bottomLeftScreenPos);
+    }
+
+    private void MoveMaskWhenDropping(Mask mask)
+    {
+        var maskTransform = mask.GameObject.transform;
+        maskTransform.SetParent(null);
+
+        maskTransform.localScale = heldMaskOriginalScale;
+        maskTransform.position = Player.Head.transform.position
+            + dropMaskDistance * Player.Head.transform.forward;
     }
 }

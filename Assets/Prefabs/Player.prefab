@@ -764,6 +764,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57c30d181de01c498e174bab74b4f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskHolder
+  cinemachineBrain: {fileID: 6599745505264545996}
   hudText: {fileID: 3973294405082857238}
   pickUpMaskMaxDistance: 3
   dropMaskDistance: 1.5
+  heldMaskScreenCornerOffset: {x: 70, y: 200, z: 1}
+  heldMaskScaleMultiplier: 0.75
