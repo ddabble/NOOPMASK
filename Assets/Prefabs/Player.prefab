@@ -685,11 +685,10 @@ MonoBehaviour:
   cinemachineCamera: {fileID: 348692723790800496}
   head: {fileID: 2395354014234339530}
   maxSpeed: 6
-  acceleration: 10
-  deceleration: 7
+  acceleration: 30
+  deceleration: 50
   jumpHeight: 2
   jumpTime: 0.5
-  fallTime: 0.4
   coyoteTime: 0.2
   verticalSpeed: 0
 --- !u!114 &4006579248033653505
@@ -705,3 +704,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskHolder
   hudText: {fileID: 3973294405082857238}
+  pickUpMaskMaxDistance: 3
+  dropMaskDistance: 1.5
