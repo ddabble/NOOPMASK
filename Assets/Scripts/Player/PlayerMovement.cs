@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
         //From movement equations
         jumpSpeed = 2 * jumpHeight / jumpTime;
-        
+
         timeSinceLastOnFloor = coyoteTime;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         {
             var newSpeed = Math.Max(speed - Time.deltaTime * deceleration, 0.0f);
             speed = newSpeed;
-          
+
         }
 
         var velocity = Vector3.up * verticalSpeed + moveDirAlongFloor * speed;
