@@ -1,17 +1,43 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static PlayerMovement;
 
 public class MaskHolder : MonoBehaviour
 {
+    private InputAction pickUpAction;
+    private InputAction equipAction;
+    private InputAction dropAction;
+
     [SerializeField]
     private TMP_Text hudText;
 
-    private Mask equippedMask;
+    [SerializeField]
+    private float pickUpMaskMaxDistance = 3.0f;
+    [SerializeField]
+    private float dropMaskDistance = 1.5f;
+    private Mask lookingAtMask;
+    private Mask heldMask;
+    private bool isMaskEquipped = false;
 
     void Start()
     {
+        pickUpAction = InputSystem.actions.FindAction("Attack");
+        equipAction = InputSystem.actions.FindAction("Interact");
+        dropAction = InputSystem.actions.FindAction("Drop");
+
         hudText.text = "";
+
+        pickUpAction.started += OnPickUpActionStarted;
+        equipAction.started += OnEquipActionStarted;
+        dropAction.started += OnDropActionStarted;
+    }
+
+    void OnDisable()
+    {
+        dropAction.started -= OnDropActionStarted;
+        equipAction.started -= OnEquipActionStarted;
+        pickUpAction.started -= OnPickUpActionStarted;
     }
 
     void FixedUpdate()
@@ -36,13 +62,79 @@ public class MaskHolder : MonoBehaviour
                 playerHead.position,
                 playerHead.TransformDirection(Vector3.forward),
                 out var hit,
-                Mathf.Infinity,
+                pickUpMaskMaxDistance,
                 Layer.MASKS.mask
             ))
         {
-            hudText.text = hit.collider.name;
+            var hitObj = hit.collider.gameObject;
+            lookingAtMask = hitObj.GetComponent<Mask>();
+            hudText.text = hitObj.name;
         }
         else
+        {
+            lookingAtMask = null;
             hudText.text = "";
+        }
+    }
+
+    private void OnPickUpActionStarted(InputAction.CallbackContext ctx)
+    {
+        if (lookingAtMask == null || heldMask != null)
+            return;
+
+        SetHeldMask(lookingAtMask);
+    }
+
+    private void OnEquipActionStarted(InputAction.CallbackContext ctx)
+    {
+        if (heldMask == null)
+            return;
+
+        if (isMaskEquipped)
+            heldMask.OnUnequipped();
+        else
+            heldMask.OnEquipped();
+        isMaskEquipped = !isMaskEquipped;
+    }
+
+    private void OnDropActionStarted(InputAction.CallbackContext ctx)
+    {
+        if (heldMask == null)
+            return;
+
+        var oldMask = heldMask;
+        // Restore various components before calling `OnUnequipped()`
+        SetHeldMask(null);
+        if (isMaskEquipped)
+        {
+            oldMask.OnUnequipped();
+            isMaskEquipped = false;
+        }
+    }
+
+    private void SetHeldMask(Mask mask)
+    {
+        if (mask == null)
+        {
+            if (heldMask == null)
+                return;
+
+            heldMask.GetRenderer().enabled = true;
+            heldMask.GetCollider().enabled = true;
+            var maskRb = heldMask.GameObject.GetComponent<Rigidbody>();
+            if (maskRb)
+                maskRb.isKinematic = false;
+            heldMask.GameObject.transform.position = Player.Head.transform.position
+                + dropMaskDistance * Player.Head.transform.forward;
+        }
+        else
+        {
+            mask.GetRenderer().enabled = false;
+            mask.GetCollider().enabled = false;
+            var maskRb = mask.GameObject.GetComponent<Rigidbody>();
+            if (maskRb)
+                maskRb.isKinematic = true;
+        }
+        heldMask = mask;
     }
 }
