@@ -69,7 +69,7 @@ public class MaskHolder : MonoBehaviour
                 playerHead.TransformDirection(Vector3.forward),
                 out var hit,
                 pickUpMaskMaxDistance,
-                Layer.ALL_MASKS_MASK
+                Layer.MASKS.mask
             ))
         {
             var hitObj = hit.collider.gameObject;
