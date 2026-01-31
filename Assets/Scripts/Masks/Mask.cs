@@ -8,10 +8,6 @@ public interface Mask
     {
         return GameObject.GetComponent<Collider>();
     }
-    public Renderer GetRenderer()
-    {
-        return GameObject.GetComponent<Renderer>();
-    }
 
     public void OnEquipped();
     public void OnUnequipped();
