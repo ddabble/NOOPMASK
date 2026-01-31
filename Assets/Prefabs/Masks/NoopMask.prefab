@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2010611468080963538}
   - component: {fileID: 8456134532859757141}
   - component: {fileID: 4486453154390604042}
-  m_Layer: 6
+  m_Layer: 16
   m_Name: NoopMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4327982724932469259}
   - component: {fileID: 3294311750132624345}
   - component: {fileID: 1336049076909633806}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
