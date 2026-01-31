@@ -224,7 +224,7 @@ Shader "Custom/Sky"
             {
                 float dotup = dot(float3(0, 1, 0), ray_dir);
                 // TODO evt juster nedover
-                return lerp(lerp(_HorizonColor, _TopColor, smoothstep(.2, -.6, dotup*dotup*dotup)), _BottomColor, smoothstep(.41, -.25, dotup*dotup));
+                return lerp(lerp(_HorizonColor, _TopColor, smoothstep(.2, -.6, dotup*dotup*dotup)), _BottomColor, smoothstep(.06, -.01, dotup*dotup));
             }
 
             // Multi-octave scattering thingy from some paper
