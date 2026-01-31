@@ -321,8 +321,13 @@ Shader "Custom/Sky"
             }
 
             // Add to color
-            float3 render_sun(float dotsun)
+            float3 render_sun(float3 sun_direction, float3 eyedir)
             {
+                // float a = .001*sin(eyedir.y + TIME);
+                // eyedir.x *= cos(a);
+                // eyedir.z *= sin(a);
+                float dotsun = dot(sun_direction, eyedir);
+                // dotsun += sin(.5*eyedir.y + .1*TIME)*.01;
                 float sharpsun = smoothstep(.995, 1., dotsun);
                 float blurrysun = smoothstep(.98, 1., dotsun);
                 float3 sun = _SunColor;
@@ -346,7 +351,7 @@ Shader "Custom/Sky"
                 float3 sun_direction = sun.direction;
                 float dotsun = dot(sun_direction, eyedir);
                 if (eyedir.y < 0.01)
-                    return render_background(eyedir) + render_sun(dotsun) + render_creepy_stuff(dotsun);
+                    return render_background(eyedir) + render_sun(sun_direction, eyedir) + render_creepy_stuff(dotsun);
 
                 float3 background = render_background(eyedir);
                 float3 color;
@@ -376,7 +381,7 @@ Shader "Custom/Sky"
                     color = background;
                 }
 
-                color += render_sun(dotsun);
+                color += render_sun(sun_direction, eyedir);
                 color += render_creepy_stuff(dotsun);
 
                 return color;
