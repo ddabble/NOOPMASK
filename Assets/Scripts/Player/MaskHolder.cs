@@ -50,6 +50,8 @@ public class MaskHolder : MonoBehaviour
     private float heldMaskScaleMultiplier = 0.2f;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private Transform maskPositionHolding;
 
     private void Awake()
     {
@@ -206,22 +208,12 @@ public class MaskHolder : MonoBehaviour
     private void MoveMaskToHeldPos(Mask mask)
     {
         var maskTransform = mask.GameObject.transform;
-        var headTransform = Player.Head.transform;
-        maskTransform.SetParent(headTransform);
-
-        MoveMaskToScreenPos(
-            mask, new Vector3(Screen.width / 2f, 0, 0) + heldMaskScreenBottomOffset
-        );
+        maskTransform.SetParent(maskPositionHolding);
+        maskTransform.position = maskPositionHolding.position;
+        maskTransform.rotation = maskPositionHolding.rotation;
 
         // Turn the mask toward the camera
         maskTransform.LookAt(Camera.transform);
-    }
-
-    private void MoveMaskToScreenPos(Mask mask, Vector3 pos)
-    {
-        var maskTransform = mask.GameObject.transform;
-        var screenPos = new Vector3(pos.x, pos.y, Camera.nearClipPlane + pos.z);
-        maskTransform.position = Camera.ScreenToWorldPoint(screenPos);
     }
 
     private void DropMask(Mask mask)
@@ -234,27 +226,23 @@ public class MaskHolder : MonoBehaviour
         if (maskRb)
             maskRb.isKinematic = false;
 
-        maskTransform.position = FindClosestFreeSpaceAbove(
-            Player.Head.transform.position
-            + dropMaskDistance * Player.Head.transform.forward
-        );
+        maskTransform.position = GetDropPos();
     }
 
-    private Vector3 FindClosestFreeSpaceAbove(Vector3 pos)
+    private Vector3 GetDropPos()
     {
         if (Physics.Raycast(
-                pos + 10f * Vector3.up,
-                Vector3.down,
+                Player.Head.transform.position,
+                Player.Head.transform.forward,
                 out var hit,
-                1000,
+                dropMaskDistance,
                 Layer.DEFAULT.mask
             ))
         {
-            var newPos = hit.point + 0.5f * Vector3.up;
-            if (newPos.y > pos.y)
-                return newPos;
+            return hit.point;
         }
-        return pos;
+        return Player.Head.transform.position
+            + dropMaskDistance * Player.Head.transform.forward;
     }
 
     private IEnumerator AnimateEquippedMaskText()
