@@ -231,7 +231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 5}
+  m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6781238113022757920
 CanvasRenderer:
@@ -296,7 +296,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 6397646556532220403}]
+  m_Children:
+  - {fileID: 6397646556532220403}
   m_Father: {fileID: 9017981321419235895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2935176600778225481
@@ -333,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4203651875756007911
@@ -464,8 +465,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2980353975860741786}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05738135, y: 0.679896, z: -0.05350898, w: 0.72909915}
-  m_LocalPosition: {x: 0, y: 1.7999997, z: 0}
+  m_LocalRotation: {x: -0.2510303, y: 0.66138357, z: 0.2513289, w: 0.66059774}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -638,9 +639,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1656348444742060995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8925396449584899817
@@ -706,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5718705820830436286}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05738135, y: 0.679896, z: -0.05350898, w: 0.72909915}
+  m_LocalRotation: {x: -0.2510303, y: 0.66138357, z: 0.2513289, w: 0.66059774}
   m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -784,7 +785,7 @@ MonoBehaviour:
   ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: 86
+    Value: 90.068115
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -794,7 +795,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 9
+    Value: -41.614056
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
