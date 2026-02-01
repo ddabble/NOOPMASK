@@ -6,6 +6,15 @@ public class Bust : MonoBehaviour
     private Transform maskMountPoint;
     public Transform MaskMountPoint => maskMountPoint;
 
+    [SerializeField]
+    private GameObject startWithMaskEquipped;
+
+    void Start()
+    {
+        if (startWithMaskEquipped)
+            EquipMask(startWithMaskEquipped.GetComponent<Mask>());
+    }
+
     public void EquipMask(Mask mask)
     {
         var maskTransform = mask.GameObject.transform;
