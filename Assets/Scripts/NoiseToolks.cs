@@ -3,6 +3,7 @@ using UnityEditor;
 
 public class NoiseToolks : MonoBehaviour
 {
+#if UNITY_EDITOR
     [MenuItem("Noise/AllTheNoise")]
     public static void CreateAllTheNoise()
     {
@@ -64,4 +65,5 @@ public class NoiseToolks : MonoBehaviour
         texture.Apply();
         return texture;
     }
+#endif
 }

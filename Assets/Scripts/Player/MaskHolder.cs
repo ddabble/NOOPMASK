@@ -7,6 +7,8 @@ using static PlayerMovement;
 
 public class MaskHolder : MonoBehaviour
 {
+    public static MaskHolder Singleton;
+
     private InputAction pickUpOrDropAction;
     private InputAction equipAction;
 
@@ -25,15 +27,40 @@ public class MaskHolder : MonoBehaviour
     private Mask lookingAtMask;
     private Mask heldMask;
     private Mask equippedMask;
+    public Mask EquippedMask => equippedMask;
     [SerializeField]
     private Vector3 heldMaskScreenBottomOffset;
     [SerializeField]
     private float heldMaskScaleMultiplier = 0.2f;
+    [SerializeField]
+    private Animator animator;
+
+    private void Awake()
+    {
+        #region Singleton boilerplate
+
+        if (Singleton != null)
+        {
+            if (Singleton != this)
+            {
+                Debug.LogWarning($"There's more than one {Singleton.GetType()} in the scene!", this);
+                Destroy(gameObject);
+            }
+
+            return;
+        }
+
+        Singleton = this;
+
+        #endregion Singleton boilerplate
+    }
 
     void Start()
     {
         pickUpOrDropAction = InputSystem.actions.FindAction("Attack");
         equipAction = InputSystem.actions.FindAction("Equip");
+
+        hudText.text = "";
 
         pickUpOrDropAction.started += OnPickUpOrDropActionStarted;
         equipAction.started += OnEquipActionStarted;
@@ -96,9 +123,13 @@ public class MaskHolder : MonoBehaviour
         {
             DropMask(heldMask);
             SetHeldMask(null);
+            animator.SetBool("IsHoldingMask", false);
         }
         if (lookingAtMask != null)
+        {
             SetHeldMask(lookingAtMask);
+            animator.SetBool("IsHoldingMask", true);
+        }
     }
 
     private void OnEquipActionStarted(InputAction.CallbackContext ctx)
@@ -133,6 +164,7 @@ public class MaskHolder : MonoBehaviour
         {
             EquippedMaskCamera.Singleton.EquipMask(mask);
             mask.OnEquipped();
+            animator.SetTrigger("EquipMask");
         }
 
         equippedMask = mask;
