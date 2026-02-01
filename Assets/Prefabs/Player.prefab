@@ -353,11 +353,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -169369889
-      Data2: 1130253095
-      Data3: 649333381
-      Data4: 1599330645
-    Path: event:/Klonk
+      Data1: -1934395195
+      Data2: 1316206717
+      Data3: 1992103329
+      Data4: 1513256390
+    Path: event:/Cloth
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -730,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2980353975860741786}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.06544138, y: 0.7172067, z: 0.067978136, w: 0.69044256}
   m_LocalPosition: {x: -6.9242244, y: 7.811617, z: 5.178545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1143,7 +1143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5718705820830436286}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.06544138, y: 0.7172067, z: 0.067978136, w: 0.69044256}
   m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1328,11 +1328,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -169369889
-      Data2: 1130253095
-      Data3: 649333381
-      Data4: 1599330645
-    Path: event:/Klonk
+      Data1: -1934395195
+      Data2: 1316206717
+      Data3: 1992103329
+      Data4: 1513256390
+    Path: event:/Cloth
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
