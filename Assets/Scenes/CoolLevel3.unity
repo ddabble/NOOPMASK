@@ -1326,7 +1326,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mega Bust
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2967822593424790141, guid: 4826fe557ae814449a0d7c2128ab4b3a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
