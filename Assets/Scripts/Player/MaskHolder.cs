@@ -45,8 +45,6 @@ public class MaskHolder : MonoBehaviour
     private Mask equippedMask;
     public Mask EquippedMask => equippedMask;
     [SerializeField]
-    private Vector3 heldMaskScreenBottomOffset;
-    [SerializeField]
     private float heldMaskScaleMultiplier = 0.5f;
     private Vector3 heldMaskOriginalScale;
     [SerializeField]
@@ -159,23 +157,18 @@ public class MaskHolder : MonoBehaviour
 
     private void SetHeldMask(Mask mask)
     {
+        // Restore scale of currently held mask, before it'll be unset
+        if (heldMask != null)
+            heldMask.GameObject.transform.localScale = heldMaskOriginalScale;
+
         if (mask == null)
         {
-            if (heldMask != null)
-            {
-                var heldMaskTransform = heldMask.GameObject.transform;
-                heldMaskTransform.localScale = heldMaskOriginalScale;
-            }
             animator.SetBool(IsHoldingMask, false);
             dropEmitter.Play();
         }
         else
         {
-            if (heldMask != null)
-            {
-                var heldMaskTransform = heldMask.GameObject.transform;
-                heldMaskTransform.localScale = heldMaskOriginalScale;
-            }
+            // Shrink the mask to visually fit in the player hand
             var maskTransform = mask.GameObject.transform;
             heldMaskOriginalScale = maskTransform.localScale;
             maskTransform.localScale = heldMaskScaleMultiplier * heldMaskOriginalScale;
