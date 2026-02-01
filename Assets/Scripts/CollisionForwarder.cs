@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +8,19 @@ public class CollisionForwarder : MonoBehaviour
     private void Start()
     {
         body = GetComponent<Rigidbody>();
+
+        HideIfHideMaskIsEquipped();
     }
+
+    private void HideIfHideMaskIsEquipped()
+    {
+        if (MaskHolder.Singleton.EquippedMask is not HideMask hideMask)
+            return;
+
+        if ((hideMask.AffectedObjectLayer.value & (1 << gameObject.layer)) != 0)
+            gameObject.SetActive(false);
+    }
+
     void OnCollisionEnter(Collision c)
     {
         if (Pendulum.Singleton.transform.GetChild(0).gameObject == c.gameObject)
@@ -18,7 +29,7 @@ public class CollisionForwarder : MonoBehaviour
             Pendulum.Singleton.OnCollision(c);
         }
     }
-    
+
     private IEnumerator WaitAndPush(int times)
     {
         yield return null;
