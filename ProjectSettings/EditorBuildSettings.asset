@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CoolLevelFinal.unity
     guid: b12839d3da454de44a8aa4e3ced411f8
+  - enabled: 1
+    path: Assets/Scenes/CoolLevel6.unity
+    guid: a050fbdd1aa0b4047ba340bdfeb4bc00
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
