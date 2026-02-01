@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class MaskHolder : MonoBehaviour
     private Camera Camera => cinemachineBrain.OutputCamera;
     [SerializeField]
     private TMP_Text hudText;
+    [SerializeField]
+    private TMP_Text titleText;
 
     [SerializeField]
     private float pickUpMaskMaxDistance = 3.0f;
@@ -32,10 +35,10 @@ public class MaskHolder : MonoBehaviour
         pickUpOrDropAction = InputSystem.actions.FindAction("Attack");
         equipAction = InputSystem.actions.FindAction("Equip");
 
-        hudText.text = "";
-
         pickUpOrDropAction.started += OnPickUpOrDropActionStarted;
         equipAction.started += OnEquipActionStarted;
+
+        StartCoroutine(WaitAndHideTitleCard());
     }
 
     void OnDisable()
@@ -47,6 +50,12 @@ public class MaskHolder : MonoBehaviour
     void FixedUpdate()
     {
         CheckLookingAtMask();
+    }
+
+    private IEnumerator WaitAndHideTitleCard()
+    {
+        yield return new WaitForSeconds(3);
+        titleText.text = "";
     }
 
     private void CheckLookingAtMask(bool debug = false)
