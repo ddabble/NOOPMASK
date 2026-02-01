@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5883657971200968570, guid: 627d69c3c157c394f8c17077ad98dc5a, type: 3}
+      propertyPath: nextSceneName
+      value: CoolLevel3
+      objectReference: {fileID: 0}
     - target: {fileID: 9001321970906124682, guid: 627d69c3c157c394f8c17077ad98dc5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.96
