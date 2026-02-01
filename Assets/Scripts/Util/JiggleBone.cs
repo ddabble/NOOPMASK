@@ -21,7 +21,7 @@ public class JiggleBone : MonoBehaviour
     [SerializeField]
     Transform offsetTarget = null;
 
-    //public Rigidbody body;
+    public Rigidbody body;
 
     private float lastPlayerDiff = 0f;
 
@@ -40,8 +40,8 @@ public class JiggleBone : MonoBehaviour
         {
             Vector3 diff = lastPos - measurementPoint.position;
             float playerDiff = 0f;
-            //if (body)
-            //    playerDiff = Mathf.Abs(lastPlayerDiff - body.velocity.magnitude);
+            if (body)
+                playerDiff = Mathf.Abs(lastPlayerDiff - body.linearVelocity.magnitude);
             lastPos = measurementPoint.position + diff.normalized * offsetMagnitude;
             lastPlayerDiff = playerDiff;
         }

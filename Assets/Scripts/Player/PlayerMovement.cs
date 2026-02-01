@@ -95,8 +95,10 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleMovement();
 
-        var cameraRotation = Quaternion.LookRotation(cameraTransform.forward);
-        head.transform.rotation = cameraRotation;
+        var cameraRotation = Quaternion.LookRotation(cameraTransform.forward, Vector3.up);
+        head.transform.rotation = Quaternion.Slerp(
+             head.transform.rotation, cameraRotation, 30f * Time.deltaTime
+        );
     }
 
     void FixedUpdate()
