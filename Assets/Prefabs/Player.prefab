@@ -730,8 +730,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2980353975860741786}
   serializedVersion: 2
+<<<<<<< Updated upstream
   m_LocalRotation: {x: -0.06544138, y: 0.7172067, z: 0.067978136, w: 0.69044256}
   m_LocalPosition: {x: -6.9242244, y: 7.811617, z: 5.178545}
+=======
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1549,10 +1554,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: hands animated 4 fix (2)
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 8838726686530366103, guid: fb583d2146a5cba4cbf894199871ba70, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 9119912464428089398, guid: 2489c304cb1068c43a43977cece9818e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d975ffc9756ba8a48997a5d40f68c769, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
