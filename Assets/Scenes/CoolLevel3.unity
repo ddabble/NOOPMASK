@@ -279,10 +279,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5943560517374618747, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
-      propertyPath: affectedObjectLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 7696185107470545211, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
       propertyPath: m_Name
       value: HideMask
@@ -1089,6 +1085,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+--- !u!1001 &2017528062
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.58397
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.78931
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.36595
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424981448787951922, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_Name
+      value: Equipped Mask Camera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9579d054e4053845bc0386f086363e9, type: 3}
 --- !u!4 &318222200478439982
 Transform:
   m_ObjectHideFlags: 0
@@ -1949,3 +2002,4 @@ SceneRoots:
   - {fileID: 939120334}
   - {fileID: 1011003152}
   - {fileID: 510497965}
+  - {fileID: 2017528062}

@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HideMask
   affectedObjectLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!54 &2218375838809747943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bcdb4895215eebf4c936ac6e9b46b212, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 668689d1bf725c549a9a0faa121c4332, type: 2}
+    - target: {fileID: -7511558181221131132, guid: bcdb4895215eebf4c936ac6e9b46b212, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 668689d1bf725c549a9a0faa121c4332, type: 2}
     - target: {fileID: 919132149155446097, guid: bcdb4895215eebf4c936ac6e9b46b212, type: 3}
       propertyPath: m_Name
       value: Monkey no see
