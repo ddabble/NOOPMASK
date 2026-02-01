@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{44d0f8fd-c98e-4e04-afd0-55800e52255d}">
+		<property name="assetPath">
+			<value>clotch/scratch4.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.39183673469387753</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{081930bb-f4e0-46c9-ac02-1d4d6ba68c2a}</destination>
+		</relationship>
+	</object>
+</objects>
