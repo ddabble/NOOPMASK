@@ -196,7 +196,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4830772108749615413
 GameObject:
@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 7876909574719790340}
   - component: {fileID: 2536946844828637820}
   - component: {fileID: 2489707931532599940}
+  - component: {fileID: 5883657971200968570}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -358,12 +359,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.9, y: 1.3689669, z: 1}
+  m_Center: {x: 0.67201716, y: 0.18448304, z: 0}
+--- !u!114 &5883657971200968570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096445292861507808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db23ab9ffe167342927909a81d4ba36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NextScene
 --- !u!1 &6186326349193492066
 GameObject:
   m_ObjectHideFlags: 0
