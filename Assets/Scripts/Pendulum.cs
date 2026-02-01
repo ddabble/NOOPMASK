@@ -44,7 +44,6 @@ public class Pendulum : MonoBehaviour
     public void OnCollision(Collision collision)
     {
         DispenseCount++;
-        Debug.Log(transform.GetChild(0).localRotation.eulerAngles.x);
         transform.GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0f, Sign * 15f), ForceMode.Impulse);
         StartCoroutine(WaitAndDispenseNew());
     }
