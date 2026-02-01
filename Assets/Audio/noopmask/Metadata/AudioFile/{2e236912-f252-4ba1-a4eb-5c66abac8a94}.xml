@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{2e236912-f252-4ba1-a4eb-5c66abac8a94}">
+		<property name="assetPath">
+			<value>klonk/BrickThud9.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.067097505668934243</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{081930bb-f4e0-46c9-ac02-1d4d6ba68c2a}</destination>
+		</relationship>
+	</object>
+</objects>

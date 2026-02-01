@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{1b8d0447-4f9d-4ec5-ba06-02dc38a4e37b}">
+		<property name="assetPath">
+			<value>boing/Metal19.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2705895691609976</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{081930bb-f4e0-46c9-ac02-1d4d6ba68c2a}</destination>
+		</relationship>
+	</object>
+</objects>
