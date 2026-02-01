@@ -923,7 +923,7 @@ MonoBehaviour:
   ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: 90.068115
+    Value: 90
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -933,7 +933,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: -41.614056
+    Value: 0
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
