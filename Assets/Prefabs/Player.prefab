@@ -236,8 +236,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "bridge \u30D6\u30EA\u30C3\u30C9"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5ecbaa45d5fe83fdcb219fa8f213e5e6, type: 2}
+  m_sharedMaterial: {fileID: 1159572509077393490, guid: 5ecbaa45d5fe83fdcb219fa8f213e5e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -632,8 +632,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Remove this on startup
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5ecbaa45d5fe83fdcb219fa8f213e5e6, type: 2}
+  m_sharedMaterial: {fileID: 1159572509077393490, guid: 5ecbaa45d5fe83fdcb219fa8f213e5e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -939,8 +939,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Remove this on startup
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5ecbaa45d5fe83fdcb219fa8f213e5e6, type: 2}
+  m_sharedMaterial: {fileID: 1159572509077393490, guid: 5ecbaa45d5fe83fdcb219fa8f213e5e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: 92.17851
+    Value: 92.17853
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
