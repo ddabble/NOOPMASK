@@ -1049,6 +1049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2006005083569756378, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_text
+      value: "pendulum \u30B9\u30A4\u30F3\u30B0\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 7236467479937897623, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
       propertyPath: m_Name
       value: Player
