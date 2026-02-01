@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3554925486269347916}
   - component: {fileID: 3187384055030482043}
   - component: {fileID: 473111390531772299}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: VisibilityMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -149,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3dd475fd4c8820044868b1a644025e63, type: 3}
       propertyPath: m_Name
       value: Monkey see
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3dd475fd4c8820044868b1a644025e63, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
