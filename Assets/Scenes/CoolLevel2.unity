@@ -1259,30 +1259,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5943560517374618747, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
-      propertyPath: affectedObjectLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 7696185107470545211, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
       propertyPath: m_Name
       value: HideMask
       objectReference: {fileID: 0}
-    - target: {fileID: 7696185107470545211, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7912066858808424244, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8560694812888864481, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 668689d1bf725c549a9a0faa121c4332, type: 2}
-    - target: {fileID: 8560694812888864481, guid: 8950cd6ed303ec94fb10af54aeed0f9b, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 668689d1bf725c549a9a0faa121c4332, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
