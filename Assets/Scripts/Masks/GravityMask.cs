@@ -42,6 +42,7 @@ public class GravityMask : MonoBehaviour, Mask
             });
 
             body.useGravity = false;
+            body.excludeLayers = Layer.PLAYER.mask;
         }
     }
 
@@ -52,7 +53,6 @@ public class GravityMask : MonoBehaviour, Mask
             if (kvp.Key == null)
                 continue;
 
-            // Constant upward acceleration (mass-independent)
             kvp.Key.AddForce(Vector3.up * upwardGravityStrength, ForceMode.Acceleration);
         }
     }
@@ -67,6 +67,7 @@ public class GravityMask : MonoBehaviour, Mask
             item.Key.useGravity = item.Value.useGravity;
             item.Key.linearVelocity = item.Value.linearVelocity;
             item.Key.angularVelocity = item.Value.angularVelocity;
+            item.Key.excludeLayers = 0;
         }
 
         affectedBodies.Clear();
