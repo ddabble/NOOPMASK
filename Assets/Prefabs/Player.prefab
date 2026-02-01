@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4120249617119533122}
   - component: {fileID: 3212885347028312433}
   - component: {fileID: 2071670633490533861}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HUD Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547372235745488527}
   - component: {fileID: 5186508735569243629}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Decal Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 8709742726027582434}
   - component: {fileID: 6781238113022757920}
   - component: {fileID: 2384402174429082478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2046430375415841631}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 2263244358765977169}
   - component: {fileID: 4203651875756007911}
   - component: {fileID: 3973294405082857238}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HUD Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 8347067053336244281}
   - component: {fileID: 1092717836526486733}
   - component: {fileID: 6599745505264545996}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 8625779383868527802}
   - component: {fileID: 3205587626934327157}
   - component: {fileID: 9008558791095653590}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +752,7 @@ GameObject:
   - component: {fileID: 7611618186350297852}
   - component: {fileID: 4006579248033653505}
   - component: {fileID: 4566989003423146571}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
