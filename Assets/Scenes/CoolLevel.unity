@@ -176,6 +176,40 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+--- !u!1 &838893842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8269488413464806444, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
+  m_PrefabInstance: {fileID: 843423596074420802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1113909834
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424981448787951922, guid: e9579d054e4053845bc0386f086363e9, type: 3}
+      propertyPath: m_Name
+      value: Equipped Mask Camera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9579d054e4053845bc0386f086363e9, type: 3}
 --- !u!1001 &1314119091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698993497973466981, guid: 4826fe557ae814449a0d7c2128ab4b3a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9999995
+      value: 3.309
       objectReference: {fileID: 0}
     - target: {fileID: 2698993497973466981, guid: 4826fe557ae814449a0d7c2128ab4b3a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -730,6 +764,7 @@ SceneRoots:
   - {fileID: 6877044126956183563}
   - {fileID: 1535894328}
   - {fileID: 228981749}
+  - {fileID: 1113909834}
   - {fileID: 1215385705948830022}
   - {fileID: 1314119091}
   - {fileID: 843423596074420802}
