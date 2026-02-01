@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaa947b61f8fd96e9124bb479701154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Menu
-  firstLevelName: CoolLevel
+  firstLevelName: CoolLevel1
 --- !u!1 &362258341
 GameObject:
   m_ObjectHideFlags: 0

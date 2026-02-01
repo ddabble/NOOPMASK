@@ -84,41 +84,24 @@ public class MaskHolder : MonoBehaviour
     private void OnPickUpOrDropActionStarted(InputAction.CallbackContext ctx)
     {
         if (heldMask != null)
+        {
+            DropMask(heldMask);
             SetHeldMask(null);
+        }
         if (lookingAtMask != null)
             SetHeldMask(lookingAtMask);
     }
 
     private void OnEquipActionStarted(InputAction.CallbackContext ctx)
     {
-        equippedMask?.OnUnequipped();
-
-        // Swap held and equipped masks
-        (heldMask, equippedMask) = (equippedMask, heldMask);
-
-        if (equippedMask != null)
-        {
-            MoveMaskToEquippedPos(equippedMask);
-            equippedMask.OnEquipped();
-        }
-        if (heldMask != null)
-            MoveMaskToHeldPos(heldMask);
+        var oldEquippedMask = equippedMask;
+        SetEquippedMask(heldMask);
+        SetHeldMask(oldEquippedMask);
     }
 
     private void SetHeldMask(Mask mask)
     {
-        if (mask == null)
-        {
-            if (heldMask == null)
-                return;
-
-            heldMask.GetCollider().enabled = true;
-            var maskRb = heldMask.GameObject.GetComponent<Rigidbody>();
-            if (maskRb)
-                maskRb.isKinematic = false;
-            DropMask(heldMask);
-        }
-        else
+        if (mask != null)
         {
             mask.GetCollider().enabled = false;
             var maskRb = mask.GameObject.GetComponent<Rigidbody>();
@@ -128,6 +111,22 @@ public class MaskHolder : MonoBehaviour
         }
 
         heldMask = mask;
+    }
+
+    private void SetEquippedMask(Mask mask)
+    {
+        if (equippedMask != null)
+        {
+            EquippedMaskCamera.Singleton.UnequipMask(equippedMask);
+            equippedMask.OnUnequipped();
+        }
+        if (mask != null)
+        {
+            EquippedMaskCamera.Singleton.EquipMask(mask);
+            mask.OnEquipped();
+        }
+
+        equippedMask = mask;
     }
 
     private void MoveMaskToHeldPos(Mask mask)
@@ -144,11 +143,6 @@ public class MaskHolder : MonoBehaviour
         maskTransform.LookAt(Camera.transform);
     }
 
-    private void MoveMaskToEquippedPos(Mask mask)
-    {
-        EquippedMaskCamera.Singleton.EquipMask(mask);
-    }
-
     private void MoveMaskToScreenPos(Mask mask, Vector3 pos)
     {
         var maskTransform = mask.GameObject.transform;
@@ -160,6 +154,11 @@ public class MaskHolder : MonoBehaviour
     {
         var maskTransform = mask.GameObject.transform;
         maskTransform.SetParent(null);
+
+        mask.GetCollider().enabled = true;
+        var maskRb = maskTransform.GetComponent<Rigidbody>();
+        if (maskRb)
+            maskRb.isKinematic = false;
 
         maskTransform.position = Player.Head.transform.position
             + dropMaskDistance * Player.Head.transform.forward;
