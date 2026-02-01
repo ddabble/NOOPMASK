@@ -239,7 +239,7 @@ public class MaskHolder : MonoBehaviour
                 Layer.DEFAULT.mask
             ))
         {
-            return hit.point;
+            return hit.point - 0.2f * Player.Head.transform.forward;
         }
         return Player.Head.transform.position
             + dropMaskDistance * Player.Head.transform.forward;
