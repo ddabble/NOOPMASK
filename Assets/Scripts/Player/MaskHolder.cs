@@ -226,27 +226,23 @@ public class MaskHolder : MonoBehaviour
         if (maskRb)
             maskRb.isKinematic = false;
 
-        maskTransform.position = FindClosestFreeSpaceAbove(
-            Player.Head.transform.position
-            + dropMaskDistance * Player.Head.transform.forward
-        );
+        maskTransform.position = GetDropPos();
     }
 
-    private Vector3 FindClosestFreeSpaceAbove(Vector3 pos)
+    private Vector3 GetDropPos()
     {
         if (Physics.Raycast(
-                pos + 10f * Vector3.up,
-                Vector3.down,
+                Player.Head.transform.position,
+                Player.Head.transform.forward,
                 out var hit,
-                1000,
+                dropMaskDistance,
                 Layer.DEFAULT.mask
             ))
         {
-            var newPos = hit.point + 0.5f * Vector3.up;
-            if (newPos.y > pos.y)
-                return newPos;
+            return hit.point;
         }
-        return pos;
+        return Player.Head.transform.position
+            + dropMaskDistance * Player.Head.transform.forward;
     }
 
     private IEnumerator AnimateEquippedMaskText()
