@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TimeMask : MonoBehaviour, Mask
 {
     [SerializeField]
     private LayerMask affectedObjectLayer;
     private Dictionary<Rigidbody, (Vector3 linearVelocity, Vector3 angularVelocity)> FrozenObjects = new Dictionary<Rigidbody, (Vector3 linearVelocity, Vector3 angularVelocity)>();
+
+    public string DisplayedMaskName => "Stopped 凍結する";
 
     public void OnEquipped()
     {
