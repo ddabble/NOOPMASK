@@ -9,10 +9,9 @@ public class GravityMask : MonoBehaviour, Mask
     [SerializeField]
     private float upwardGravityStrength = 9.81f;
 
-    private Dictionary<Rigidbody, RigidbodyState> affectedBodies =
-        new Dictionary<Rigidbody, RigidbodyState>();
+    private Dictionary<Rigidbody, RigidbodyState> affectedBodies = new();
 
-    public string DisplayedMaskName => "逆重力 Anti-Gravity";
+    public string DisplayedMaskName => "Newton no more ニュートン";
 
     private struct RigidbodyState
     {

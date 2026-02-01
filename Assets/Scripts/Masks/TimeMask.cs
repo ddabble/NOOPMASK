@@ -5,7 +5,7 @@ public class TimeMask : MonoBehaviour, Mask
 {
     [SerializeField]
     private LayerMask affectedObjectLayer;
-    private Dictionary<Rigidbody, (Vector3 linearVelocity, Vector3 angularVelocity)> FrozenObjects = new Dictionary<Rigidbody, (Vector3 linearVelocity, Vector3 angularVelocity)>();
+    private Dictionary<Rigidbody, (Vector3 linearVelocity, Vector3 angularVelocity)> FrozenObjects = new();
 
     public string DisplayedMaskName => "Stopped 凍結する";
 
