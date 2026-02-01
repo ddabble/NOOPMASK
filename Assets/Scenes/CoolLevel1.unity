@@ -471,38 +471,6 @@ PrefabInstance:
       propertyPath: affectedObjectLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 3187384055030482043, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_Size.x
-      value: 0.3337859
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_Size.y
-      value: 0.30222917
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_Size.z
-      value: 0.26794243
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_Center.x
-      value: 0.01648134
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_Center.y
-      value: 0.06184566
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_Center.z
-      value: 0.015382767
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6255856811373028573, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.008

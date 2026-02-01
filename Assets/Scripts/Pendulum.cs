@@ -33,13 +33,12 @@ public class Pendulum : MonoBehaviour
     private void Update()
     {
         var newSign = transform.GetChild(0).localRotation.eulerAngles.x > 100 && transform.GetChild(0).localRotation.eulerAngles.x < 330 ? 1 : -1;
-        
+
         if (newSign != Sign)
         {
             DispenseCount = 1;
         }
         Sign = newSign;
-        Debug.Log(Sign);
     }
 
     public void OnCollision(Collision collision)

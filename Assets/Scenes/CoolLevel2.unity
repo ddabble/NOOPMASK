@@ -253,14 +253,6 @@ PrefabInstance:
       propertyPath: affectedObjectLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 3187384055030482043, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3554925486269347916, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6255856811373028573, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.956

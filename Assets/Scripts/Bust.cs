@@ -25,5 +25,19 @@ public class Bust : MonoBehaviour
         maskTransform.LookAt(
             maskTransform.position + transform.forward, transform.up
         );
+
+        var maskRb = maskTransform.GetComponent<Rigidbody>();
+        if (maskRb)
+            maskRb.isKinematic = true;
+    }
+
+    public void UnequipMask(Mask mask)
+    {
+        var maskTransform = mask.GameObject.transform;
+        maskTransform.SetParent(null);
+
+        var maskRb = maskTransform.GetComponent<Rigidbody>();
+        if (maskRb)
+            maskRb.isKinematic = false;
     }
 }

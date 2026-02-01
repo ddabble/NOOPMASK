@@ -45,4 +45,9 @@ public class EquippedMaskCamera : MonoBehaviour
     {
         bust.EquipMask(mask);
     }
+
+    public void UnequipMask(Mask mask)
+    {
+        bust.UnequipMask(mask);
+    }
 }
