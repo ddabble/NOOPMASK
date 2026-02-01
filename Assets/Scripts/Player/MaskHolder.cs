@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -14,6 +15,15 @@ public class MaskHolder : MonoBehaviour
 
     private InputAction pickUpOrDropAction;
     private InputAction equipAction;
+
+    [SerializeField]
+    private StudioEventEmitter equipEmitter;
+
+    [SerializeField]
+    private StudioEventEmitter pickupEmitter;
+
+    [SerializeField]
+    private StudioEventEmitter dropEmitter;
 
     [SerializeField]
     private CinemachineBrain cinemachineBrain;
@@ -149,6 +159,7 @@ public class MaskHolder : MonoBehaviour
         if (mask == null)
         {
             animator.SetBool(IsHoldingMask, false);
+            dropEmitter.Play();
         }
         else
         {
@@ -159,6 +170,7 @@ public class MaskHolder : MonoBehaviour
             MoveMaskToHeldPos(mask);
 
             animator.SetBool(IsHoldingMask, true);
+            pickupEmitter.Play();
         }
 
         heldMask = mask;
@@ -171,6 +183,8 @@ public class MaskHolder : MonoBehaviour
             EquippedMaskCamera.Singleton.UnequipMask(equippedMask);
             equippedMask.OnUnequipped();
 
+            equipEmitter.Play();
+
             StopCoroutine(equippedMaskTextAnimationCoroutine);
             equippedMaskText.text = "";
         }
@@ -178,7 +192,9 @@ public class MaskHolder : MonoBehaviour
         {
             EquippedMaskCamera.Singleton.EquipMask(mask);
             mask.OnEquipped();
+
             animator.SetTrigger(EquipMask);
+            equipEmitter.Play();
 
             equippedMaskText.text = mask.DisplayedMaskName;
             equippedMaskTextAnimationCoroutine = StartCoroutine(AnimateEquippedMaskText());

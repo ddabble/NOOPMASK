@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4340776220844594344}
   - component: {fileID: 5062977788720456169}
   - component: {fileID: 777451601387362105}
+  - component: {fileID: 6665162415136249496}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -125,3 +126,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d022a40bc725cb48b0d58add6100383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Death
+--- !u!114 &6665162415136249496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814342302117852888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 106526172
+      Data2: 1141391397
+      Data3: 422435249
+      Data4: 1359764107
+    Path: event:/Goofy
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 2536946844828637820}
   - component: {fileID: 2489707931532599940}
   - component: {fileID: 5883657971200968570}
+  - component: {fileID: 4418388763351562616}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -379,6 +380,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextScene
   nextSceneName: 
+--- !u!114 &4418388763351562616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096445292861507808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -615495016
+      Data2: 1113748780
+      Data3: 1403353988
+      Data4: 401370482
+    Path: event:/Ziip
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6186326349193492066
 GameObject:
   m_ObjectHideFlags: 0
