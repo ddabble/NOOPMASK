@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 2c6b980dcce913f4aafd35e1827fc924
+guid: 6a14ab4b808668e478216355f6e14d87
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dolfin dark
-    second: {fileID: 2100000, guid: 8bf3253e01960c148a1b481c038f32f4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dolfin light
-    second: {fileID: 2100000, guid: 9f75eab4d7ec3c248b170e22874fb01e, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
