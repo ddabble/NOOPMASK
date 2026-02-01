@@ -19,7 +19,10 @@ public class MaskHolder : MonoBehaviour
     private CinemachineBrain cinemachineBrain;
     private Camera Camera => cinemachineBrain.OutputCamera;
     [SerializeField]
-    private TMP_Text hudText;
+    private TMP_Text maskPickupText;
+    [SerializeField]
+    private TMP_Text equippedMaskText;
+    private Coroutine equippedMaskTextAnimationCoroutine;
     [SerializeField]
     private TMP_Text titleText;
 
@@ -63,7 +66,8 @@ public class MaskHolder : MonoBehaviour
         pickUpOrDropAction = InputSystem.actions.FindAction("Attack");
         equipAction = InputSystem.actions.FindAction("Equip");
 
-        hudText.text = "";
+        maskPickupText.text = "";
+        equippedMaskText.text = "";
 
         pickUpOrDropAction.started += OnPickUpOrDropActionStarted;
         equipAction.started += OnEquipActionStarted;
@@ -111,12 +115,12 @@ public class MaskHolder : MonoBehaviour
         {
             var hitObj = hit.collider.gameObject;
             lookingAtMask = hitObj.GetComponent<Mask>();
-            hudText.text = lookingAtMask.DisplayedMaskName;
+            maskPickupText.text = lookingAtMask.DisplayedMaskName;
         }
         else
         {
             lookingAtMask = null;
-            hudText.text = "";
+            maskPickupText.text = "";
         }
     }
 
@@ -126,12 +130,10 @@ public class MaskHolder : MonoBehaviour
         {
             DropMask(heldMask);
             SetHeldMask(null);
-            animator.SetBool(IsHoldingMask, false);
         }
         if (lookingAtMask != null)
         {
             SetHeldMask(lookingAtMask);
-            animator.SetBool(IsHoldingMask, true);
         }
     }
 
@@ -144,13 +146,19 @@ public class MaskHolder : MonoBehaviour
 
     private void SetHeldMask(Mask mask)
     {
-        if (mask != null)
+        if (mask == null)
+        {
+            animator.SetBool(IsHoldingMask, false);
+        }
+        else
         {
             mask.GetCollider().enabled = false;
             var maskRb = mask.GameObject.GetComponent<Rigidbody>();
             if (maskRb)
                 maskRb.isKinematic = true;
             MoveMaskToHeldPos(mask);
+
+            animator.SetBool(IsHoldingMask, true);
         }
 
         heldMask = mask;
@@ -162,12 +170,18 @@ public class MaskHolder : MonoBehaviour
         {
             EquippedMaskCamera.Singleton.UnequipMask(equippedMask);
             equippedMask.OnUnequipped();
+
+            StopCoroutine(equippedMaskTextAnimationCoroutine);
+            equippedMaskText.text = "";
         }
         if (mask != null)
         {
             EquippedMaskCamera.Singleton.EquipMask(mask);
             mask.OnEquipped();
             animator.SetTrigger(EquipMask);
+
+            equippedMaskText.text = mask.DisplayedMaskName;
+            equippedMaskTextAnimationCoroutine = StartCoroutine(AnimateEquippedMaskText());
         }
 
         equippedMask = mask;
@@ -225,5 +239,38 @@ public class MaskHolder : MonoBehaviour
                 return newPos;
         }
         return pos;
+    }
+
+    private IEnumerator AnimateEquippedMaskText()
+    {
+        var textMesh = equippedMaskText;
+        while (true)
+        {
+            textMesh.ForceMeshUpdate();
+            var textInfo = textMesh.textInfo;
+            for (int i = 0; i < textInfo.characterCount; i++)
+            {
+                var charInfo = textInfo.characterInfo[i];
+                if (!charInfo.isVisible)
+                    continue;
+
+                var charVertices = textInfo.meshInfo[charInfo.materialReferenceIndex].vertices;
+                for (int j = 0; j < 4; j++)
+                {
+                    var position = charVertices[charInfo.vertexIndex + j];
+                    charVertices[charInfo.vertexIndex + j] = position + new Vector3(0f, Mathf.Sin(Time.time * 16f + position.x * 0.1f) * 1f, 0f);
+                    Color32 gradient = Color.white;
+                    textInfo.meshInfo[charInfo.materialReferenceIndex].colors32[charInfo.vertexIndex + j] = gradient;
+                }
+            }
+            textMesh.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            for (int i = 0; i < textInfo.meshInfo.Length; i++)
+            {
+                var meshInfo = textInfo.meshInfo[i];
+                meshInfo.mesh.vertices = meshInfo.vertices;
+                textMesh.UpdateGeometry(meshInfo.mesh, i);
+            }
+            yield return null;
+        }
     }
 }
