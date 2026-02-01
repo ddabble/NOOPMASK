@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2531353812281191224, guid: cae6323f039da3245b03531cfef04998, type: 3}
+  m_Motion: {fileID: -2531353812281191224, guid: 2489c304cb1068c43a43977cece9818e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -49,7 +49,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8349542763059015795, guid: cae6323f039da3245b03531cfef04998, type: 3}
+  m_Motion: {fileID: 8349542763059015795, guid: 2489c304cb1068c43a43977cece9818e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -86,7 +86,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isHoldingMask
+    m_ConditionEvent: IsHoldingMask
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8605779100900946747}
@@ -134,7 +134,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New State
+  m_Name: NoopState
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -176,7 +176,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6509442938518843054, guid: cae6323f039da3245b03531cfef04998, type: 3}
+  m_Motion: {fileID: -6509442938518843054, guid: 2489c304cb1068c43a43977cece9818e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -191,7 +191,7 @@ AnimatorController:
   m_Name: hnds
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isHoldingMask
+  - m_Name: IsHoldingMask
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -222,9 +222,9 @@ AnimatorController:
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
-    m_DefaultWeight: 0
+    m_DefaultWeight: 1
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
@@ -287,7 +287,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isHoldingMask
+    m_ConditionEvent: IsHoldingMask
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3127398988802034983}
@@ -312,7 +312,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isHoldingMask
+    m_ConditionEvent: IsHoldingMask
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6409090211564698179}
@@ -362,7 +362,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isHoldingMask
+    m_ConditionEvent: IsHoldingMask
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6097226166362405603}
@@ -399,7 +399,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6853884394792644380, guid: cae6323f039da3245b03531cfef04998, type: 3}
+  m_Motion: {fileID: 6853884394792644380, guid: 2489c304cb1068c43a43977cece9818e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

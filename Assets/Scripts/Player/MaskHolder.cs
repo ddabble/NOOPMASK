@@ -29,6 +29,8 @@ public class MaskHolder : MonoBehaviour
     private Vector3 heldMaskScreenBottomOffset;
     [SerializeField]
     private float heldMaskScaleMultiplier = 0.2f;
+    [SerializeField]
+    private Animator animator;
 
     void Start()
     {
@@ -96,9 +98,13 @@ public class MaskHolder : MonoBehaviour
         {
             DropMask(heldMask);
             SetHeldMask(null);
+            animator.SetBool("IsHoldingMask", false);
         }
         if (lookingAtMask != null)
+        {
             SetHeldMask(lookingAtMask);
+            animator.SetBool("IsHoldingMask", true);
+        }
     }
 
     private void OnEquipActionStarted(InputAction.CallbackContext ctx)
@@ -133,6 +139,7 @@ public class MaskHolder : MonoBehaviour
         {
             EquippedMaskCamera.Singleton.EquipMask(mask);
             mask.OnEquipped();
+            animator.SetTrigger("EquipMask");
         }
 
         equippedMask = mask;
