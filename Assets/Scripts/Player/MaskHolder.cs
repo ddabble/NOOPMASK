@@ -9,6 +9,9 @@ public class MaskHolder : MonoBehaviour
 {
     public static MaskHolder Singleton;
 
+    private static readonly int IsHoldingMask = Animator.StringToHash("IsHoldingMask");
+    private static readonly int EquipMask = Animator.StringToHash("EquipMask");
+
     private InputAction pickUpOrDropAction;
     private InputAction equipAction;
 
@@ -123,12 +126,12 @@ public class MaskHolder : MonoBehaviour
         {
             DropMask(heldMask);
             SetHeldMask(null);
-            animator.SetBool("IsHoldingMask", false);
+            animator.SetBool(IsHoldingMask, false);
         }
         if (lookingAtMask != null)
         {
             SetHeldMask(lookingAtMask);
-            animator.SetBool("IsHoldingMask", true);
+            animator.SetBool(IsHoldingMask, true);
         }
     }
 
@@ -164,7 +167,7 @@ public class MaskHolder : MonoBehaviour
         {
             EquippedMaskCamera.Singleton.EquipMask(mask);
             mask.OnEquipped();
-            animator.SetTrigger("EquipMask");
+            animator.SetTrigger(EquipMask);
         }
 
         equippedMask = mask;
@@ -201,7 +204,26 @@ public class MaskHolder : MonoBehaviour
         if (maskRb)
             maskRb.isKinematic = false;
 
-        maskTransform.position = Player.Head.transform.position
-            + dropMaskDistance * Player.Head.transform.forward;
+        maskTransform.position = FindClosestFreeSpaceAbove(
+            Player.Head.transform.position
+            + dropMaskDistance * Player.Head.transform.forward
+        );
+    }
+
+    private Vector3 FindClosestFreeSpaceAbove(Vector3 pos)
+    {
+        if (Physics.Raycast(
+                pos + 10f * Vector3.up,
+                Vector3.down,
+                out var hit,
+                1000,
+                Layer.DEFAULT.mask
+            ))
+        {
+            var newPos = hit.point + 0.5f * Vector3.up;
+            if (newPos.y > pos.y)
+                return newPos;
+        }
+        return pos;
     }
 }
