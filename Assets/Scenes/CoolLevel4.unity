@@ -315,34 +315,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.54566
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 23.07876
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526152818160319382, guid: e9579d054e4053845bc0386f086363e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -1161,10 +1133,6 @@ PrefabInstance:
       propertyPath: affectedObjectLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
-    - target: {fileID: 3187384055030482043, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6255856811373028573, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.488
@@ -1472,6 +1440,38 @@ PrefabInstance:
     - target: {fileID: 2006005083569756378, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
       propertyPath: m_text
       value: "stairs up \u968E\u6BB5"
+      objectReference: {fileID: 0}
+    - target: {fileID: 487096512329103864, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 487096512329103864, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487096512329103864, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 487096512329103864, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002585669343323846, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002585669343323846, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002585669343323846, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002585669343323846, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7236467479937897623, guid: 52f0fda676263c84c8b9fa1da2926ce3, type: 3}
       propertyPath: m_Name
@@ -1880,10 +1880,6 @@ PrefabInstance:
     - target: {fileID: 473111390531772299, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
       propertyPath: affectedObjectLayer.m_Bits
       value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3187384055030482043, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6255856811373028573, guid: ab43871abdd9f0842b66a63a19839672, type: 3}
       propertyPath: m_LocalPosition.x

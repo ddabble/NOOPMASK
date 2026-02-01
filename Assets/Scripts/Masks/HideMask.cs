@@ -4,6 +4,7 @@ public class HideMask : MonoBehaviour, Mask
 {
     [SerializeField]
     private LayerMask affectedObjectLayer;
+    public LayerMask AffectedObjectLayer => affectedObjectLayer;
 
     public string DisplayedMaskName => "No see 見えない";
 
