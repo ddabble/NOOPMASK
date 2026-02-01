@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: StoneRed 1
   m_Shader: {fileID: -6465566751694194690, guid: 4c96f86e22d77784db6c88efee7b36d0, type: 3}
-  m_Parent: {fileID: 2100000, guid: 691c8a969ec82be49ab157bf755a1abe, type: 2}
+  m_Parent: {fileID: 2100000, guid: 6a9db853e1f277d4088588b379b4dc21, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _METALLICSPECGLOSSMAP

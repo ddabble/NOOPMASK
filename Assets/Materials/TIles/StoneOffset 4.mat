@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StoneOffset
+  m_Name: StoneOffset 4
   m_Shader: {fileID: -6465566751694194690, guid: 4c96f86e22d77784db6c88efee7b36d0, type: 3}
   m_Parent: {fileID: 2100000, guid: a355ae008b9c1c74085e227ecd1b04e7, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -30,8 +30,8 @@ Material:
     m_Floats: []
     m_Colors:
     - _x_offset: {r: 0, g: 0.5, b: 0.5, a: 0}
-    - _y_offset: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _z_offset: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _y_offset: {r: -0.25, g: 0.5, b: 0.5, a: 0}
+    - _z_offset: {r: -0.25, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5539417708310017680
