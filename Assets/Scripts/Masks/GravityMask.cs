@@ -9,10 +9,9 @@ public class GravityMask : MonoBehaviour, Mask
     [SerializeField]
     private float upwardGravityStrength = 9.81f;
 
-    private Dictionary<Rigidbody, RigidbodyState> affectedBodies =
-        new Dictionary<Rigidbody, RigidbodyState>();
+    private Dictionary<Rigidbody, RigidbodyState> affectedBodies = new();
 
-    public string DisplayedMaskName => "逆重力 Anti-Gravity";
+    public string DisplayedMaskName => "Newton no more ニュートン";
 
     private struct RigidbodyState
     {
@@ -42,6 +41,7 @@ public class GravityMask : MonoBehaviour, Mask
             });
 
             body.useGravity = false;
+            body.excludeLayers = Layer.PLAYER.mask;
         }
     }
 
@@ -52,7 +52,6 @@ public class GravityMask : MonoBehaviour, Mask
             if (kvp.Key == null)
                 continue;
 
-            // Constant upward acceleration (mass-independent)
             kvp.Key.AddForce(Vector3.up * upwardGravityStrength, ForceMode.Acceleration);
         }
     }
@@ -67,6 +66,7 @@ public class GravityMask : MonoBehaviour, Mask
             item.Key.useGravity = item.Value.useGravity;
             item.Key.linearVelocity = item.Value.linearVelocity;
             item.Key.angularVelocity = item.Value.angularVelocity;
+            item.Key.excludeLayers = 0;
         }
 
         affectedBodies.Clear();

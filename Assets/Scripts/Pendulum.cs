@@ -1,9 +1,8 @@
-using PrimeTween;
-using System;
+using FMODUnity;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(StudioEventEmitter))]
 public class Pendulum : MonoBehaviour
 {
 
@@ -11,8 +10,11 @@ public class Pendulum : MonoBehaviour
     public int DispenseCount = 1;
     public int Sign = 1;
 
+    private StudioEventEmitter emitter;
+
     void Awake()
     {
+        emitter = GetComponent<StudioEventEmitter>();
         #region Singleton boilerplate
 
         if (Singleton != null)
@@ -45,12 +47,14 @@ public class Pendulum : MonoBehaviour
     {
         DispenseCount++;
         transform.GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0f, Sign * 15f), ForceMode.Impulse);
+        emitter.Play();
         StartCoroutine(WaitAndDispenseNew());
     }
 
     private IEnumerator WaitAndDispenseNew()
     {
         yield return new WaitForSeconds(1f);
+        emitter.Play();
         Dispenser.Singleton.Dispense();
     }
 }

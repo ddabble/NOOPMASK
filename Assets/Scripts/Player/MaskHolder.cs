@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -9,14 +10,29 @@ public class MaskHolder : MonoBehaviour
 {
     public static MaskHolder Singleton;
 
+    private static readonly int IsHoldingMask = Animator.StringToHash("IsHoldingMask");
+    private static readonly int EquipMask = Animator.StringToHash("EquipMask");
+
     private InputAction pickUpOrDropAction;
     private InputAction equipAction;
+
+    [SerializeField]
+    private StudioEventEmitter equipEmitter;
+
+    [SerializeField]
+    private StudioEventEmitter pickupEmitter;
+
+    [SerializeField]
+    private StudioEventEmitter dropEmitter;
 
     [SerializeField]
     private CinemachineBrain cinemachineBrain;
     private Camera Camera => cinemachineBrain.OutputCamera;
     [SerializeField]
-    private TMP_Text hudText;
+    private TMP_Text maskPickupText;
+    [SerializeField]
+    private TMP_Text equippedMaskText;
+    private Coroutine equippedMaskTextAnimationCoroutine;
     [SerializeField]
     private TMP_Text titleText;
 
@@ -60,7 +76,8 @@ public class MaskHolder : MonoBehaviour
         pickUpOrDropAction = InputSystem.actions.FindAction("Attack");
         equipAction = InputSystem.actions.FindAction("Equip");
 
-        hudText.text = "";
+        maskPickupText.text = "";
+        equippedMaskText.text = "";
 
         pickUpOrDropAction.started += OnPickUpOrDropActionStarted;
         equipAction.started += OnEquipActionStarted;
@@ -108,12 +125,12 @@ public class MaskHolder : MonoBehaviour
         {
             var hitObj = hit.collider.gameObject;
             lookingAtMask = hitObj.GetComponent<Mask>();
-            hudText.text = lookingAtMask.DisplayedMaskName;
+            maskPickupText.text = lookingAtMask.DisplayedMaskName;
         }
         else
         {
             lookingAtMask = null;
-            hudText.text = "";
+            maskPickupText.text = "";
         }
     }
 
@@ -123,12 +140,10 @@ public class MaskHolder : MonoBehaviour
         {
             DropMask(heldMask);
             SetHeldMask(null);
-            animator.SetBool("IsHoldingMask", false);
         }
         if (lookingAtMask != null)
         {
             SetHeldMask(lookingAtMask);
-            animator.SetBool("IsHoldingMask", true);
         }
     }
 
@@ -141,13 +156,21 @@ public class MaskHolder : MonoBehaviour
 
     private void SetHeldMask(Mask mask)
     {
-        if (mask != null)
+        if (mask == null)
+        {
+            animator.SetBool(IsHoldingMask, false);
+            dropEmitter.Play();
+        }
+        else
         {
             mask.GetCollider().enabled = false;
             var maskRb = mask.GameObject.GetComponent<Rigidbody>();
             if (maskRb)
                 maskRb.isKinematic = true;
             MoveMaskToHeldPos(mask);
+
+            animator.SetBool(IsHoldingMask, true);
+            pickupEmitter.Play();
         }
 
         heldMask = mask;
@@ -159,12 +182,22 @@ public class MaskHolder : MonoBehaviour
         {
             EquippedMaskCamera.Singleton.UnequipMask(equippedMask);
             equippedMask.OnUnequipped();
+
+            equipEmitter.Play();
+
+            StopCoroutine(equippedMaskTextAnimationCoroutine);
+            equippedMaskText.text = "";
         }
         if (mask != null)
         {
             EquippedMaskCamera.Singleton.EquipMask(mask);
             mask.OnEquipped();
-            animator.SetTrigger("EquipMask");
+
+            animator.SetTrigger(EquipMask);
+            equipEmitter.Play();
+
+            equippedMaskText.text = mask.DisplayedMaskName;
+            equippedMaskTextAnimationCoroutine = StartCoroutine(AnimateEquippedMaskText());
         }
 
         equippedMask = mask;
@@ -201,7 +234,59 @@ public class MaskHolder : MonoBehaviour
         if (maskRb)
             maskRb.isKinematic = false;
 
-        maskTransform.position = Player.Head.transform.position
-            + dropMaskDistance * Player.Head.transform.forward;
+        maskTransform.position = FindClosestFreeSpaceAbove(
+            Player.Head.transform.position
+            + dropMaskDistance * Player.Head.transform.forward
+        );
+    }
+
+    private Vector3 FindClosestFreeSpaceAbove(Vector3 pos)
+    {
+        if (Physics.Raycast(
+                pos + 10f * Vector3.up,
+                Vector3.down,
+                out var hit,
+                1000,
+                Layer.DEFAULT.mask
+            ))
+        {
+            var newPos = hit.point + 0.5f * Vector3.up;
+            if (newPos.y > pos.y)
+                return newPos;
+        }
+        return pos;
+    }
+
+    private IEnumerator AnimateEquippedMaskText()
+    {
+        var textMesh = equippedMaskText;
+        while (true)
+        {
+            textMesh.ForceMeshUpdate();
+            var textInfo = textMesh.textInfo;
+            for (int i = 0; i < textInfo.characterCount; i++)
+            {
+                var charInfo = textInfo.characterInfo[i];
+                if (!charInfo.isVisible)
+                    continue;
+
+                var charVertices = textInfo.meshInfo[charInfo.materialReferenceIndex].vertices;
+                for (int j = 0; j < 4; j++)
+                {
+                    var position = charVertices[charInfo.vertexIndex + j];
+                    charVertices[charInfo.vertexIndex + j] = position + new Vector3(0f, Mathf.Sin(Time.time * 16f + position.x * 0.1f) * 1f, 0f);
+                    Color32 gradient = Color.white;
+                    textInfo.meshInfo[charInfo.materialReferenceIndex].colors32[charInfo.vertexIndex + j] = gradient;
+                }
+            }
+            textMesh.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            for (int i = 0; i < textInfo.meshInfo.Length; i++)
+            {
+                var meshInfo = textInfo.meshInfo[i];
+                meshInfo.mesh.vertices = meshInfo.vertices;
+                textMesh.UpdateGeometry(meshInfo.mesh, i);
+            }
+            yield return null;
+        }
     }
 }

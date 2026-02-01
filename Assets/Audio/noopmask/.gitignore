@@ -1,0 +1,8 @@
+# recommended to ignore by fmod themselves
+.cache/
+.user/
+.unsaved/
+
+# unsure about this one
+# Build/
+# can't

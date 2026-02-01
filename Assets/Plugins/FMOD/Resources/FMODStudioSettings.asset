@@ -608,10 +608,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: FMODUnity::FMODUnity.Settings
   switchSettingsMigration: 1
-  HasSourceProject: 0
+  HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../bubble-of-sound/anemoia/anemoia.fspro
-  sourceBankPath: Assets/Audio
+  sourceProjectPath: Assets/Audio/noopmask/noopmask.fspro
+  sourceBankPath: Assets/Audio/noopmask/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
