@@ -95,6 +95,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+
+        var cameraRotation = Quaternion.LookRotation(cameraTransform.forward);
+        head.transform.rotation = cameraRotation;
     }
 
     void FixedUpdate()
@@ -143,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
         var velocity = Vector3.up * verticalSpeed + moveDirAlongFloor * speed;
         controller.Move(Time.deltaTime * velocity);
-        head.transform.rotation = cameraTransform.rotation;
+        
 
     }
 
