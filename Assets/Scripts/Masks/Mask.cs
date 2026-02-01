@@ -9,6 +9,8 @@ public interface Mask
         return GameObject.GetComponent<Collider>();
     }
 
+    public string DisplayedMaskName { get; }
+
     public void OnEquipped();
     public void OnUnequipped();
 }

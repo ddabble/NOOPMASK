@@ -5,6 +5,8 @@ public class RevealMask : MonoBehaviour, Mask
     [SerializeField]
     private LayerMask affectedObjectLayer;
 
+    public string DisplayedMaskName => "I see now 開ける";
+
     public void OnEquipped()
     {
         foreach (var item in FindObjectsByType<GameObject>(FindObjectsInactive.Include, sortMode: FindObjectsSortMode.None))

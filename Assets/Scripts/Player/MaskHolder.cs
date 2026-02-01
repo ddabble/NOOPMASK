@@ -72,7 +72,7 @@ public class MaskHolder : MonoBehaviour
         {
             var hitObj = hit.collider.gameObject;
             lookingAtMask = hitObj.GetComponent<Mask>();
-            hudText.text = hitObj.name;
+            hudText.text = lookingAtMask.DisplayedMaskName;
         }
         else
         {

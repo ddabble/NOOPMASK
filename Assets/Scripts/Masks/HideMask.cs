@@ -5,6 +5,8 @@ public class HideMask : MonoBehaviour, Mask
     [SerializeField]
     private LayerMask affectedObjectLayer;
 
+    public string DisplayedMaskName => "No see 見えない";
+
     public void OnEquipped()
     {
         foreach (var item in FindObjectsByType<GameObject>(FindObjectsInactive.Include, sortMode: FindObjectsSortMode.None))
