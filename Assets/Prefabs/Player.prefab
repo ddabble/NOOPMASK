@@ -1454,7 +1454,7 @@ MonoBehaviour:
   pickUpMaskMaxDistance: 3
   dropMaskDistance: 1.5
   heldMaskScreenBottomOffset: {x: 0, y: 0, z: 0.2}
-  heldMaskScaleMultiplier: 0.75
+  heldMaskScaleMultiplier: 0.5
   animator: {fileID: 8202705118551417576}
   maskPositionHolding: {fileID: 3271215259435875829}
 --- !u!114 &4566989003423146571

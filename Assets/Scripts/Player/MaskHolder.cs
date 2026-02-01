@@ -47,7 +47,8 @@ public class MaskHolder : MonoBehaviour
     [SerializeField]
     private Vector3 heldMaskScreenBottomOffset;
     [SerializeField]
-    private float heldMaskScaleMultiplier = 0.2f;
+    private float heldMaskScaleMultiplier = 0.5f;
+    private Vector3 heldMaskOriginalScale;
     [SerializeField]
     private Animator animator;
     [SerializeField]
@@ -160,11 +161,25 @@ public class MaskHolder : MonoBehaviour
     {
         if (mask == null)
         {
+            if (heldMask != null)
+            {
+                var heldMaskTransform = heldMask.GameObject.transform;
+                heldMaskTransform.localScale = heldMaskOriginalScale;
+            }
             animator.SetBool(IsHoldingMask, false);
             dropEmitter.Play();
         }
         else
         {
+            if (heldMask != null)
+            {
+                var heldMaskTransform = heldMask.GameObject.transform;
+                heldMaskTransform.localScale = heldMaskOriginalScale;
+            }
+            var maskTransform = mask.GameObject.transform;
+            heldMaskOriginalScale = maskTransform.localScale;
+            maskTransform.localScale = heldMaskScaleMultiplier * heldMaskOriginalScale;
+
             mask.GetCollider().enabled = false;
             var maskRb = mask.GameObject.GetComponent<Rigidbody>();
             if (maskRb)
