@@ -253,6 +253,8 @@ public class MaskHolder : MonoBehaviour
             + dropMaskDistance * Player.Head.transform.forward;
     }
 
+    // Code copied from
+    // https://github.com/hackerspace-ntnu/Red-Planet-Rampage/blob/v0.5.4/Assets/Scripts/UI/CriticalTextAnimator.cs#L26-L56
     private IEnumerator AnimateEquippedMaskText()
     {
         var textMesh = equippedMaskText;
